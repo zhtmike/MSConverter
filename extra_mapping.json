@@ -1,0 +1,13 @@
+{
+    "nn.ModuleDict": "nn.CellDict",
+    "nn.ModuleList": "nn.CellList",
+    "nn.Sequential": "nn.SequentialCell",
+    "nn.Module": "nn.Cell",
+    "torch.Tensor": "ms.Tensor",
+    "torch.LongTensor": "ms.Tensor",
+    "torch.FloatTensor": "ms.Tensor",
+    "pytorch": "mindspore",
+    "PyTorch": "MindSpore",
+    "from torch": "from mindspore",
+    "import torch\n": "import mindspore as ms\n"
+}
