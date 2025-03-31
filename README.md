@@ -14,8 +14,15 @@ pip install git+https://github.com/zhtmike/MSConverter.git
 
 ## Usage
 
-- Run `torch2mint your_pytorch_script.py`. Your updated script will be shown in the terminal.
-- Run `torch2mint -i your_pytorch_script.py`. Your script will be updated in place, while the original script will be saved as `your_pytorch_script.py.old`.
+You can simply run the following command to show the updated script in the terminal
+```bash
+torch2mint your_pytorch_script.py
+```
+
+To update the script in place, run 
+```bash
+torch2mint -i your_pytorch_script.py
+```
 
 check `torch2mint -h` for the detail usage.
 
