@@ -8,6 +8,8 @@ import shutil
 import sys
 from typing import Dict, List, Optional
 
+from ms_converter._version import __version__
+
 DEFAULT_MINT_API_PATH = "assets/mindspore_v2.5.0.mint.rst"
 DEFAULT_MAPPING = "assets/mapping.json"
 
@@ -107,6 +109,10 @@ def main():
         usage=
         "Convert script from using PyTorch API to MindSpore API (mint API) partially."
     )
+    parser.add_argument('-v',
+                        '--version',
+                        action='version',
+                        version=f'%(prog)s {__version__}')
     parser.add_argument("input", help="Path of the script to be converted.")
     parser.add_argument(
         "-i",

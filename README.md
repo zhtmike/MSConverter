@@ -6,7 +6,7 @@ MS Converter can replace PyTorch interfaces in scripts with MindSpore (v2.5.0) M
 
 ## Installation
 
-### Install from GiT
+### Install from Git
 
 ```bash
 pip install git+https://github.com/zhtmike/MSConverter.git
