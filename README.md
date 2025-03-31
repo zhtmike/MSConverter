@@ -2,11 +2,15 @@
 
 MS Converter can replace PyTorch interfaces in scripts with MindSpore (v2.5.0) Mint interfaces, reducing repetitive tasks and improving development efficiency. :D
 
-*Note: The converted script may not necessarily run successfully.*
+*Disclaimer: The converted script may not necessarily run successfully.*
 
 ## Installation
 
-run `python setup.py install`
+### Install from GiT
+
+```bash
+pip install git+https://github.com/zhtmike/MSConverter.git
+```
 
 ## Usage
 
