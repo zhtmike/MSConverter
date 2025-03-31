@@ -4,13 +4,16 @@ MS Converter can replace PyTorch interfaces in scripts with MindSpore (v2.5.0) M
 
 *Note: The converted script may not necessarily run successfully.*
 
-## Install
+## Installation
 
-Clone the repository and run `python setup.py install`
+run `python setup.py install`
 
 ## Usage
 
-Run `torch2mint your_pytorch_script.py`. Your script will be updated, while the original script will be saved as `your_pytorch_script.py.old`.
+- Run `torch2mint your_pytorch_script.py`. Your updated script will be shown in the terminal.
+- Run `torch2mint -i your_pytorch_script.py`. Your script will be updated in place, while the original script will be saved as `your_pytorch_script.py.old`.
+
+check `torch2mint -h` for the detail usage.
 
 ## Note
 
