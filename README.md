@@ -1,6 +1,6 @@
 # MS Converter
 
-MS Converter can replace PyTorch interfaces in scripts with MindSpore (v2.5.0) Mint interfaces, reducing repetitive tasks and improving development efficiency. :D
+MS Converter can replace PyTorch interfaces in scripts with MindSpore (>=2.5) Mint interfaces, reducing repetitive tasks and improving development efficiency. :D
 
 *Disclaimer: The converted script may not necessarily run successfully.*
 
