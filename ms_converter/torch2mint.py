@@ -46,6 +46,18 @@ def form_base_torch_mint_mapping(api: List[str]) -> Dict[str, str]:
     return mapping
 
 
+def is_inclusive(mapping: Dict[str, str]) -> bool:
+    non_inclusive_list = list()
+    for x in mapping.keys():
+        for v in non_inclusive_list:
+            if v in x:
+                _logger.warning(
+                    "%s is already in the replacing list with key %s", v, x)
+                return True
+        non_inclusive_list.append(x)
+    return False
+
+
 def expand_torch_mint_mapping(
         mapping: Dict[str, str],
         custom_mapping_path: Optional[str] = None) -> None:
@@ -61,6 +73,11 @@ def expand_torch_mint_mapping(
         with open(custom_mapping_path, "r") as f:
             custom_mapping = json.load(f)
         extra_mapping.update(custom_mapping)
+
+    if is_inclusive(extra_mapping):
+        raise ValueError(
+            "There is some partially-duplicated keys in the mapping list. "
+            "We did not support this kind of keys yet.")
 
     # in pytorch script, we usually use nn.xxx instead of torch.nn.xxx
     for u, v in mapping.items():
