@@ -10,8 +10,9 @@ from typing import Dict, List, Optional
 
 from ms_converter._version import __version__
 
-DEFAULT_MINT_API_PATH = "assets/mindspore_v2.5.0.mint.rst"
-DEFAULT_MAPPING = "assets/mapping.json"
+ASSETS_DIR = os.path.join(sys.prefix, "ms_converter/assets")
+DEFAULT_MINT_API_PATH = os.path.join(ASSETS_DIR, "mindspore_v2.5.0.mint.rst")
+DEFAULT_MAPPING = os.path.join(ASSETS_DIR, "mapping.json")
 
 _logger = logging.getLogger(__name__)
 

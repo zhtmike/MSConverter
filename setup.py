@@ -9,7 +9,7 @@ setup(
     author="Cheung Ka Wai",
     author_email="zhtmike@gmail.com",
     packages=["ms_converter"],
-    data_files=[("assets",
+    data_files=[("ms_converter/assets",
                  ["assets/mapping.json", "assets/mindspore_v2.5.0.mint.rst"])],
     entry_points={
         "console_scripts": [
