@@ -30,7 +30,7 @@ def scan_mint_api(mint_api_path: Optional[str] = None) -> List[str]:
         _logger.debug("Reading the default MindSpore Mint API doc from %s",
                       mint_api_path)
 
-    with open(mint_api_path, "r") as f:
+    with open(mint_api_path, "r", encoding="utf-8") as f:
         content = f.read()
 
     result = re.findall(r"[ +]mindspore.mint.(\w.+)", content)
