@@ -3,6 +3,7 @@
     "nn.ModuleList": "nn.CellList",
     "nn.Sequential": "nn.SequentialCell",
     "nn.Module": "nn.Cell",
+    "nn.Parameter": "ms.Parameter",
     "torch.Tensor": "ms.Tensor",
     "torch.LongTensor": "ms.Tensor",
     "torch.FloatTensor": "ms.Tensor",
