@@ -109,15 +109,17 @@ def _torch2mint(
             continue
 
         content = re.sub(u, v, content)
-        msg = f"Update: {u.strip():<40} --> {v.strip():<40}"
-        _logger.debug(msg)
+        _logger.debug(f"Update: {u.strip():<40} --> {v.strip():<40}".replace(
+            "\n", " "))
 
     if inplace:
         backup = input_ + ".old"
         shutil.move(input_, backup)
-        _logger.debug("Backup file is saved as %s", backup)
         with open(input_, "w") as f:
             f.write(content)
+        _logger.debug(
+            "Inplace modification is finished. Old file is saved as %s",
+            backup)
     else:
         print(content)
 
