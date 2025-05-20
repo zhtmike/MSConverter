@@ -10,14 +10,19 @@ from typing import Dict, List, Optional
 
 from ms_converter._version import __version__
 
+MINT_API_TABLE = {
+    "2.5.0": "mindspore_v2.5.0.mint.rst",
+    "2.6.0": "mindspore_v2.6.0.mint.rst"
+}
+
 ASSETS_DIR = os.path.join(sys.prefix, "ms_converter/assets")
-DEFAULT_MINT_API_PATH = os.path.join(ASSETS_DIR, "mindspore_v2.5.0.mint.rst")
 DEFAULT_MAPPING = os.path.join(ASSETS_DIR, "mapping.json")
 
 _logger = logging.getLogger(__name__)
 
 
-def scan_mint_api(mint_api_path: Optional[str] = None) -> List[str]:
+def scan_mint_api(ms_version: str = "2.5",
+                  mint_api_path: Optional[str] = None) -> List[str]:
     if mint_api_path is not None:
         if not mint_api_path.endswith(".rst"):
             raise ValueError(
@@ -26,7 +31,8 @@ def scan_mint_api(mint_api_path: Optional[str] = None) -> List[str]:
         _logger.debug("Reading the custom MindSpore Mint API doc from %s",
                       mint_api_path)
     else:
-        mint_api_path = os.path.abspath(DEFAULT_MINT_API_PATH)
+        mint_api_path = os.path.abspath(
+            os.path.join(ASSETS_DIR, MINT_API_TABLE[ms_version]))
         _logger.debug("Reading the default MindSpore Mint API doc from %s",
                       mint_api_path)
 
@@ -91,12 +97,13 @@ def expand_torch_mint_mapping(
 
 def _torch2mint(
     input_: str,
+    ms_version: str = "2.5",
     mint_api_path: Optional[str] = None,
     custom_mapping_path: Optional[str] = None,
     inplace: bool = False,
 ) -> None:
     input_ = os.path.abspath(input_)
-    api = scan_mint_api(mint_api_path=mint_api_path)
+    api = scan_mint_api(ms_version=ms_version, mint_api_path=mint_api_path)
     mapping = form_base_torch_mint_mapping(api)
     expand_torch_mint_mapping(mapping, custom_mapping_path=custom_mapping_path)
 
@@ -127,22 +134,24 @@ def _torch2mint(
 def main():
     parser = argparse.ArgumentParser(
         usage=
-        "Convert script from using PyTorch API to MindSpore API (mint API) partially."
-    )
+        "Convert script from using PyTorch API to MindSpore API (mint API) partially.",
+        formatter_class=argparse.ArgumentDefaultsHelpFormatter)
     parser.add_argument('-v',
                         '--version',
                         action='version',
                         version=f'%(prog)s {__version__}')
     parser.add_argument("input", help="Path of the script to be converted.")
-    parser.add_argument(
-        "-i",
-        "--in_place",
-        action="store_true",
-        help="make the update to files in place",
-    )
-    parser.add_argument("--mint_api_path", help="Path to the Mint API list")
-    parser.add_argument("--custom_mapping_path",
+    parser.add_argument("-i",
+                        "--in-place",
+                        action="store_true",
+                        help="make the update to files in place")
+    parser.add_argument("--mint-api-path", help="Path to the Mint API list")
+    parser.add_argument("--custom-mapping-path",
                         help="Path to the custom mapping list")
+    parser.add_argument("--ms-version",
+                        choices=["2.5.0", "2.6.0"],
+                        default="2.5.0",
+                        help="MindSpore version for API mapping.")
     parser.add_argument("-vv",
                         "--verbose",
                         action="store_true",
@@ -161,6 +170,7 @@ def main():
 
     _torch2mint(
         args.input,
+        ms_version=args.ms_version,
         mint_api_path=args.mint_api_path,
         custom_mapping_path=args.custom_mapping_path,
         inplace=args.in_place,

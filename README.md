@@ -24,13 +24,18 @@ To update the script in place, run
 torch2mint -i your_pytorch_script.py
 ```
 
+To select different Mindspore version (e.g. v2.6.0) for API mapping, run
+```bash
+torch2mint --ms-version 2.6.0 your_pytorch_script.py
+```
+
 check `torch2mint -h` for the detail usage.
 
 ## Note
 
 - To update the MindSpore Mint API list, download the `.rst` file from the MindSpore website (e.g., [MindSpore 2.5.0 API List](https://gitee.com/mindspore/mindspore/blob/v2.5.0/docs/api/api_python/mindspore.mint.rst) ), run 
   ```bash
-  torch2mint your_pytorch_script.py --mint_api_path your_mint_api_path.rst
+  torch2mint your_pytorch_script.py --mint-api-path your_mint_api_path.rst
   ```
 
 - To add conversion rules, simply add a json file with the content
@@ -39,5 +44,5 @@ check `torch2mint -h` for the detail usage.
   ```
   similar to `assets/mapping.json`, then run 
   ```bash
-  torch2mint your_pytorch_script.py --custom_mapping_path your_custom_mapping_path.json
+  torch2mint your_pytorch_script.py --custom-mapping-path your_custom_mapping_path.json
   ```

@@ -1,3 +1,4 @@
+import glob
 from setuptools import setup
 
 setup(
@@ -10,7 +11,8 @@ setup(
     author_email="zhtmike@gmail.com",
     packages=["ms_converter"],
     data_files=[("ms_converter/assets",
-                 ["assets/mapping.json", "assets/mindspore_v2.5.0.mint.rst"])],
+                 ["assets/mapping.json",
+                  *glob.glob("assets/mindspore_*.rst")])],
     entry_points={
         "console_scripts": [
             "torch2mint = ms_converter.torch2mint:main",
