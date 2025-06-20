@@ -150,7 +150,7 @@ def main():
                         help="Path to the custom mapping list")
     parser.add_argument("--ms-version",
                         choices=["2.5.0", "2.6.0"],
-                        default="2.5.0",
+                        default="2.6.0",
                         help="MindSpore version for API mapping.")
     parser.add_argument("-vv",
                         "--verbose",
