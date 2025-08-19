@@ -12,7 +12,8 @@ from ms_converter._version import __version__
 
 MINT_API_TABLE = {
     "2.5.0": "mindspore_v2.5.0.mint.rst",
-    "2.6.0": "mindspore_v2.6.0.mint.rst"
+    "2.6.0": "mindspore_v2.6.0.mint.rst",
+    "2.7.0": "mindspore_v2.7.0.mint.rst"
 }
 
 ASSETS_DIR = os.path.join(sys.prefix, "ms_converter/assets")
@@ -149,8 +150,8 @@ def main():
     parser.add_argument("--custom-mapping-path",
                         help="Path to the custom mapping list")
     parser.add_argument("--ms-version",
-                        choices=["2.5.0", "2.6.0"],
-                        default="2.6.0",
+                        choices=MINT_API_TABLE.keys(),
+                        default="2.7.0",
                         help="MindSpore version for API mapping.")
     parser.add_argument("-vv",
                         "--verbose",
