@@ -8,6 +8,7 @@
     "torch.LongTensor": "ms.Tensor",
     "torch.FloatTensor": "ms.Tensor",
     "torch.tensor": "ms.tensor",
+    "torch.float64": "ms.float64",
     "torch.float32": "ms.float32",
     "torch.float16": "ms.float16",
     "torch.bfloat16": "ms.bfloat16",
